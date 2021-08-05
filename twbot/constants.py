@@ -1,0 +1,8 @@
+NETWORK_UPDATE_TIMER = 0.1
+GAME_SIMULATION_TIMER = 0.1
+BAHAVIOUR_UPDATE_TIMER = 0.1
+BEHAVOIUR_BATTLE_STATE_TIME = 2.0  # how many second bot soyld keep battle state
+BEHAVOIUR_MOVING_STATE_TIME = 2.0
+BEHAVIOUR_SEARCH_SHOT_DISTANCE = 30.0
+BEHAVIOUR_MOVING_SPACE = 5.0  # space size near player which it try to keep near walls
+RTREE_DELTA = 1.0
