@@ -1,28 +1,30 @@
 import math
+from typing import Tuple, Union
+# from twbot.game_items_controller import GameItemsController  # type: ignore
 
 
 class Monster:
-    def __init__(self, item_controller):
+    def __init__(self, item_controller) -> None:
         self._item_controller = item_controller
-        self._name = None
-        self._type = None
-        self._radius = None
-        self._damage = None
-        self._damage_radius = None
+        self._name: Union[str, None] = None
+        self._type: Union[int, None] = None
+        self._radius: Union[float, None] = None
+        self._damage: Union[int, None] = None
+        self._damage_radius: Union[float, None] = None
 
-    def update_params(self, id, life, max_life, state, speed, target_type, target_id, target_x, target_y, x, y,
-                      name=None, type=None, radius=None, damage=None, damage_radius=None):
-        self._id = id
-        self._life = life
-        self._max_life = max_life
-        self._state = state
-        self._speed = speed
-        self._target_type = target_type
-        self._target_id = target_id
-        self._target_x = target_x
-        self._target_y = target_y
-        self._x = x
-        self._y = y
+    def update_params(self, id: int, life: int, max_life: int, state: int, speed: float, target_type: int, target_id: int, target_x: float, target_y: float, x: float, y: float,
+                      name: str=None, type: int=None, radius: float=None, damage: int=None, damage_radius: float=None) -> None:
+        self._id: int = id
+        self._life: int = life
+        self._max_life: int = max_life
+        self._state: int = state
+        self._speed: float = speed
+        self._target_type: int = target_type
+        self._target_id: int = target_id
+        self._target_x: float = target_x
+        self._target_y: float = target_y
+        self._x: float = x
+        self._y: float = y
         if name is not None:
             self._name = name
         if type is not None:
@@ -34,24 +36,26 @@ class Monster:
         if damage_radius is not None:
             self._damage_radius = damage_radius
 
-    def update_life(self, life, max_life):
+    def update_life(self, life: int, max_life: int) -> None:
         self._life = life
         self._max_life = max_life
 
-    def get_position(self):
+    def get_position(self) -> Tuple[float, float]:
         return (self._x, self._y)
 
-    def get_radius(self):
+    def get_radius(self) -> Union[float, None]:
         return self._radius
 
-    def set_position(self, x, y):
+    def set_position(self, x, y) -> None:
         self._x = x
         self._y = y
 
-    def get_life(self):
+    def get_life(self) -> int:
         return self._life
 
-    def get_next_point(self, dt):
+    def get_next_point(self, dt: float) -> Tuple[float, float]:
+        d: Tuple[float, float]
+        l: float
         if self._state == 0:
             return (self._x, self._y)
         elif self._state == 1:
@@ -67,9 +71,11 @@ class Monster:
                 d = (x - self._x, y - self._y)
                 l = math.sqrt(d[0]**2 + d[1]**2)
                 return (self._x + d[0] * self._speed * dt / l, self._y + d[1] * self._speed * dt / l)
+            else:
+                return (self._x, self._y)
         else:
             # unknown state
             return (self._x, self._y)
 
-    def is_dead(self):
+    def is_dead(self) -> bool:
         return self._life <= 0

@@ -1,6 +1,5 @@
 from PySide6 import QtWidgets, QtGui, QtCore
-from ui.bot_widget import BotWidget
-import random
+from ui.bot_widget import BotWidget  # type: ignore
 
 
 class AdderWidget(QtWidgets.QWidget):
@@ -10,8 +9,8 @@ class AdderWidget(QtWidgets.QWidget):
         super().__init__()
         self._plus_w = 40
         self._plus_h = 160
-        self.width = 256
-        self.height = 256
+        self._width = 256
+        self._height = 256
         self._row = row
         self._column = column
 
@@ -19,8 +18,8 @@ class AdderWidget(QtWidgets.QWidget):
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self._label)
 
-        self.setMinimumSize(self.width, self.height)
-        self.setMaximumSize(self.width, self.height)
+        self.setMinimumSize(self._width, self._height)
+        self.setMaximumSize(self._width, self._height)
 
     def mousePressEvent(self, event):
         self.click_signal.emit(self._row, self._column)

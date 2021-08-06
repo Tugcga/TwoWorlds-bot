@@ -1,5 +1,5 @@
 from PySide6 import QtWidgets
-from ui.ui_app import BotsFabrciApp
+from ui.ui_app import BotsFabrciApp  # type: ignore
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication()

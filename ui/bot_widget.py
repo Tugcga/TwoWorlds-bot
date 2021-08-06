@@ -1,5 +1,6 @@
 from PySide6 import QtWidgets, QtGui, QtCore
 from twbot.tw_bot import TWBot
+import random
 
 
 class BotWidget(QtWidgets.QWidget):
@@ -20,7 +21,7 @@ class BotWidget(QtWidgets.QWidget):
         self.setMaximumSize(self.width, self.height)
         self.layout = QtWidgets.QVBoxLayout(self)
 
-        self.bot = TWBot(auto_connect=True, e_qt_widget=self)
+        self.bot = TWBot(model=random.randint(0, 1), auto_connect=True, e_qt_widget=self)
         self.draw_data = None  # place here data for drawing in the canvas
 
     def connect_cmd(self):
