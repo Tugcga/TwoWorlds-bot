@@ -81,9 +81,9 @@ class BotsFabricMainWidget(QtWidgets.QWidget):
             w.close()
 
 
-class BotsFabrciApp(QtWidgets.QMainWindow):
+class BotsFabricApp(QtWidgets.QMainWindow):
     def __init__(self):
-        super(BotsFabrciApp, self).__init__()
+        super(BotsFabricApp, self).__init__()
         self._main = BotsFabricMainWidget()
         self._scroll = QtWidgets.QScrollArea()
         self._scroll.setWidgetResizable(True)

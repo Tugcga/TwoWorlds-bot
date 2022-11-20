@@ -5,6 +5,7 @@ This is bot for [Two Worlds project game](http://twoworlds.azurewebsites.net/). 
 This bot implement basic behavior and all necessary communications with server. It use the following external Python modules:
 * [PySide6](https://pypi.org/project/PySide6/) From this module it use QtThreads
 * [RTreelib](https://github.com/sergkr/rtreelib) This module used only for building r-tree for walls of the location and quiring it for getting intersections. So, this module needed only in minimal configuration
+* [Requests](https://github.com/psf/requests) This module used for getting server ip-adress
 
 The main class is `TWBot`. When the instance of this class is created, then it initialize all necessary data, create three parallel threads and start update loops. 
 
